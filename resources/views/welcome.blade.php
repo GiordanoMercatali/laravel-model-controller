@@ -3,13 +3,24 @@
 @section('content')
     <h1>Movies</h1>
     <div class="container">
-        <ul>
+        {{-- <ul> --}}
+            
+        <div class="row d-flex justify-content-center align-baseline flex-wrap">
             @foreach ($movies as $movie)
-            <li class="col-2 p-2">
-                <img src="{{ $movie->image }}" alt="{{ $movie->title }}">
-                <h4 class="text-center">{{ $movie->title }}</h4>
-            </li>
+                <div class="col-3 p-1">
+                    <div class="card">
+                        <img src="{{ $movie->image }}" alt="{{ $movie->title }}">
+                        <h4 class="text-center">{{ $movie->title }}</h4>
+                        {{-- <h5 class="text-center">{{ $movie->original_title }}</h5> --}}
+                        @if ($movie->original_title != $movie->title)
+                        <h5 class="text-center">{{ $movie->original_title }}</h5>
+                        @endif
+                        <p class="text-center">{{ $movie->vote }}</p>
+                    </div>
+                </div>
             @endforeach
-        </ul>
+        </div>
+            
+        {{-- </ul> --}}
     </div>
 @endsection
